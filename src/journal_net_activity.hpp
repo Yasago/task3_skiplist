@@ -80,5 +80,17 @@ void JournalNetActivity<numLevels>::outputSuspiciousActivities(
         const TimeStamp& timeTo,
         std::ostream& out) const
 {
-    // TODO: Implement this method!
+    if (timeFrom > timeTo)
+        throw std::invalid_argument("incorrect borders");
+
+    typename NetActivityList::Node* leftBorder = _journal.findLastLessThan(timeFrom)->next;
+    if (leftBorder != _journal.getPreHead() && leftBorder->key >= timeFrom)
+    {
+        while (leftBorder != _journal.getPreHead() && leftBorder->key <= timeTo)
+        {
+            std::cout << leftBorder << std::endl;
+            leftBorder = leftBorder->next;
+        }
+    }
+
 }

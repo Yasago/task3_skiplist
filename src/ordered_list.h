@@ -117,8 +117,6 @@ public:
     /// Virtual destructor.
     virtual ~OrderedList();
 
-    // TODO: деструктор!
-
     /// Inserts a new node with the given (value == val) and (key == tkey).
     virtual void insert(const Value& val, const Key& tkey);
 
